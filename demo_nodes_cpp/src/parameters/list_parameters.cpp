@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <iostream>
+#include <fstream>
 #include <memory>
 
 #include "rclcpp/rclcpp.hpp"
@@ -55,13 +55,12 @@ int main(int argc, char ** argv)
   // List the details of a few parameters up to a namespace depth of 10.
   auto parameters_and_prefixes = parameters_client->list_parameters({"foo", "bar"}, 10);
 
-  // TODO(dhood): Use stream logging macro once available.
   std::stringstream ss;
   for (auto & name : parameters_and_prefixes.names) {
-    ss << "Parameter name: " << name << std::endl;
+    RCLCPP_INFO(node->get_logger(), "Parameter name: %s", name.c_str())
   }
   for (auto & prefix : parameters_and_prefixes.prefixes) {
-    ss << "Parameter prefix: " << prefix << std::endl;
+    RCLCPP_INFO(node->get_logger(), "Parameter prefix: %s", prefix.c_str())
   }
   RCLCPP_INFO(node->get_logger(), ss.str().c_str())
 
