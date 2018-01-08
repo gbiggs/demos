@@ -55,7 +55,7 @@ def test_dlopen_composition():
     output_file = '@EXPECTED_OUTPUT_ALL@'
     launch(
         name,
-        [executable, talker_library, listener_library, server_library, client_library],
+        [executable, listener_library, talker_library, server_library, client_library],
         output_file)
 
 
@@ -66,17 +66,17 @@ def test_api_pubsub_composition():
         {
             'cmd': [
                 '@API_COMPOSITION_CLI_EXECUTABLE@',
-                'composition', 'composition::Talker'],
-            'name': 'load_talker_component',
+                'composition', 'composition::Listener'],
+            'name': 'load_listener_component',
             'exit_handler': exit_on_error_exit_handler,
         },
         {
             'cmd': [
                 '@API_COMPOSITION_CLI_EXECUTABLE@',
-                'composition', 'composition::Listener'],
-            'name': 'load_listener_component',
+                'composition', 'composition::Talker'],
+            'name': 'load_talker_component',
             'exit_handler': exit_on_error_exit_handler,
-        }
+        },
     ]
     output_file = '@EXPECTED_OUTPUT_PUBSUB@'
     launch(name, [executable], output_file, additional_processes=additional_processes)
