@@ -44,8 +44,8 @@ int main(int argc, char * argv[])
     for (auto clazz : classes) {
       RCLCPP_INFO(logger, "Instantiate class %s", clazz.c_str())
       auto node = loader->createInstance<rclcpp::Node>(clazz);
-      exec.add_node(node);
       nodes.push_back(node);
+      exec.add_node(node);
     }
     loaders.push_back(loader);
   }

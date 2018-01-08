@@ -135,9 +135,9 @@ int main(int argc, char * argv[])
           if (clazz == class_name) {
             RCLCPP_INFO(node->get_logger(), "Instantiate class %s", clazz.c_str())
             auto node = loader->createInstance<rclcpp::Node>(clazz);
-            exec.add_node(node);
-            nodes.push_back(node);
             loaders.push_back(loader);
+            nodes.push_back(node);
+            exec.add_node(node);
             response->success = true;
             return;
           }
