@@ -32,7 +32,7 @@ int main(int argc, char * argv[])
   }
   rclcpp::Logger logger = rclcpp::get_logger(DLOPEN_COMPOSITION_LOGGER_NAME);
   rclcpp::init(argc, argv);
-  rclcpp::executors::SingleThreadedExecutor exec;
+  rclcpp::executors::MultiThreadedExecutor exec;
   std::vector<class_loader::ClassLoader *> loaders;
   std::vector<std::shared_ptr<rclcpp::Node>> nodes;
 

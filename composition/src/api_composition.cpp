@@ -73,7 +73,7 @@ int main(int argc, char * argv[])
   rclcpp::init(argc, argv);
   auto node = rclcpp::Node::make_shared("api_composition");
 
-  rclcpp::executors::SingleThreadedExecutor exec;
+  rclcpp::executors::MultiThreadedExecutor exec;
   exec.add_node(node);
 
   std::vector<class_loader::ClassLoader *> loaders;

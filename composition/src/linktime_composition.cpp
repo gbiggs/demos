@@ -28,7 +28,7 @@ int main(int argc, char * argv[])
 
   rclcpp::init(argc, argv);
   rclcpp::Logger logger = rclcpp::get_logger(LINKTIME_COMPOSITION_LOGGER_NAME);
-  rclcpp::executors::SingleThreadedExecutor exec;
+  rclcpp::executors::MultiThreadedExecutor exec;
   std::vector<class_loader::ClassLoader *> loaders;
   std::vector<std::shared_ptr<rclcpp::Node>> nodes;
 
